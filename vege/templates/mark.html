@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block start %}
+<div class="container mt-5 mb-4">
+    <h2>Rank : {{current_rank}}</h2>
+    <h2>Total No :{{total_mark.total_marks}}</h2>
+    <table class="table p-4">
+        <thead>
+            <tr>
+                <th scope="col">S.NO</th>
+                <th scope="col">Subject</th>
+                <th scope="col">Marks</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for mark in queryset %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td><b>{{ mark.subject.subject_name }}</b></td>
+                <td>{{ mark.marks }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">No marks found for this student.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
